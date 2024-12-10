@@ -10,10 +10,11 @@ public class Product
 
     public virtual List<OrderItem> OrderItems { get; private set; } = new();
 
-    public Product(string name, decimal price)
+    public Product(string name, decimal price, int stock)
     {
         Name = name;
         Price = price;
+        Stock = stock;
 
         ValidateProduct();
     }
@@ -30,7 +31,7 @@ public class Product
             throw new DomainException("Product price cannot be less or equal to 0");
         }
 
-        if (Price < 0)
+        if (Stock < 0)
         {
             throw new DomainException("Product stock cannot be negative");
         }
