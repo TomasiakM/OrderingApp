@@ -109,17 +109,18 @@ void ShowOrderView()
 
         foreach (var item in orderItems)
         {
-            Console.WriteLine("Id produktu: {0}, Cena: {1}, Ilość: {2}, Obniżka dla tego towaru: {3}",
+            Console.WriteLine("Id produktu: {0}, Cena: {1}, Ilość: {2}, Wartość towaru (z uwzględnieniem obniżki {3}): {4}",
                 item.ProductId,
                 item.Price,
                 item.Quantity,
-                item.Discount);
+                item.Discount,
+                item.GetTotalOrderItemValue());
         }
 
-        Console.WriteLine("Ilość przedmiotów w zamówieniu: {0}, Wartość całego zamówienia (po obniżce zamówienia {1}): {2}",
+        Console.WriteLine("Ilość przedmiotów w zamówieniu: {0}, Wartość całego zamówienia (z uwzględnieniem obniżki {1}): {2}",
             order.GetQuantityOfAllProducts(),
             order.Discount,
-            order.GetOrderValue());
+            order.GetTotalOrderValue());
 
         Console.Read();
     }

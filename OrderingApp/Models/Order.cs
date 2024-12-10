@@ -22,9 +22,12 @@ public class Order
         return Items.Sum(item => item.Quantity);
     }
 
-    public decimal GetOrderValue()
+    public decimal GetTotalOrderValue()
     {
-        return Items.Sum(e => (e.Price * e.Quantity) - e.Discount);
+        var totalItemsValue = Items
+            .Sum(item => (item.Price * item.Quantity) - item.Discount);
+
+        return totalItemsValue - Discount;
     }
 
     public void SetDiscount(decimal discount)

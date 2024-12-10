@@ -8,7 +8,7 @@ internal sealed class TotalOrderValueDiscountStrategy : IDiscountStrategy
 
     public void ApplyDiscount(Order order)
     {
-        var orderValue = order.GetOrderValue();
+        var orderValue = order.GetTotalOrderValue();
         if (orderValue > ValueThreshold)
         {
             order.SetDiscount(orderValue * Discount);

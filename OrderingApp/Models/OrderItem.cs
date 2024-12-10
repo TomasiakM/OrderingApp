@@ -21,9 +21,9 @@ public class OrderItem
             throw new DomainException("Product stocks are less than requested quantity");
         }
 
-        product.DecreaseStock(quantity);
-
         ValidateOrderItem();
+
+        product.DecreaseStock(quantity);
     }
 
     public void SetDiscount(decimal discount)
@@ -31,6 +31,11 @@ public class OrderItem
         Discount = discount;
 
         ValidateOrderItem();
+    }
+
+    public decimal GetTotalOrderItemValue()
+    {
+        return Price * Quantity - Discount;
     }
 
     private void ValidateOrderItem()

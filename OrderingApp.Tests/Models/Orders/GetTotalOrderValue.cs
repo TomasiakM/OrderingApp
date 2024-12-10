@@ -12,7 +12,7 @@ public class GetOrderValue
 
         var order = new Order(new() { orderItem }, new TestDiscountService());
 
-        Assert.Equal(2m, order.GetOrderValue());
+        Assert.Equal(2m, order.GetTotalOrderValue());
     }
 
     [Fact]
@@ -25,7 +25,7 @@ public class GetOrderValue
 
         var order = new Order(new() { orderItem, orderItem2 }, new TestDiscountService());
 
-        Assert.Equal(12m, order.GetOrderValue());
+        Assert.Equal(12m, order.GetTotalOrderValue());
     }
 
     [Fact]
@@ -37,7 +37,7 @@ public class GetOrderValue
         var order = new Order(new() { orderItem }, new TestDiscountService());
         order.SetDiscount(1m);
 
-        Assert.Equal(1m, order.GetOrderValue());
+        Assert.Equal(1m, order.GetTotalOrderValue());
     }
 
     [Fact]
@@ -48,6 +48,6 @@ public class GetOrderValue
         orderItem.SetDiscount(1);
         var order = new Order(new() { orderItem }, new TestDiscountService());
 
-        Assert.Equal(4m, order.GetOrderValue());
+        Assert.Equal(4m, order.GetTotalOrderValue());
     }
 }
