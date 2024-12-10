@@ -1,4 +1,5 @@
 ﻿using OrderingApp.Exceptions;
+using OrderingApp.Services.DiscountService;
 
 namespace OrderingApp.Models;
 public class Order
@@ -8,35 +9,27 @@ public class Order
 
     public List<OrderItem> Items { get; private set; } = new();
 
-    public Order(List<OrderItem> items)
+    public Order(List<OrderItem> items, IDiscountService discountService)
     {
         Items = items;
 
         ValidateOrder();
-        CalculateDiscount();
+        discountService.Calculate(this);
     }
 
-
-    private void CalculateDiscount()
+    public int GetQuantityOfAllProducts()
     {
-        var itemsCount = Items.Count;
+        return Items.Sum(item => item.Quantity);
+    }
 
-        if (itemsCount == 2)
-        {
-            var cheapest = Items.OrderBy(e => e.Price).First();
-            cheapest.SetDiscount(cheapest.Price * 0.1m);
-        }
-        else if (itemsCount >= 3)
-        {
-            var cheapest = Items.OrderBy(e => e.Price).First();
-            cheapest.SetDiscount(cheapest.Price * 0.2m);
-        }
+    public decimal GetOrderValue()
+    {
+        return Items.Sum(e => (e.Price * e.Quantity) - e.Discount);
+    }
 
-        var totalValue = Items.Sum(e => e.Price * e.Quantity);
-        if (totalValue > 5000)
-        {
-            Discount = totalValue * 0.05m;
-        }
+    public void SetDiscount(decimal discount)
+    {
+        Discount = discount;
 
         ValidateOrder();
     }
