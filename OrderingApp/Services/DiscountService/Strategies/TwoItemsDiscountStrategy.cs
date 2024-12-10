@@ -7,7 +7,7 @@ internal sealed class TwoItemsDiscountStrategy : IDiscountStrategy
 
     public void ApplyDiscount(Order order)
     {
-        if (order.Items.Count == 2)
+        if (order.GetQuantityOfAllProducts() == 2)
         {
             var cheapest = order.Items.OrderBy(e => e.Price).First();
             cheapest.SetDiscount(cheapest.Price * Discount);
