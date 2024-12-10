@@ -21,6 +21,8 @@ public class OrderItem
             throw new DomainException("Product stocks are less than requested quantity");
         }
 
+        product.DecreaseStock(quantity);
+
         ValidateOrderItem();
     }
 

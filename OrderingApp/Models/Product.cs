@@ -19,6 +19,18 @@ public class Product
         ValidateProduct();
     }
 
+    public void DecreaseStock(int amount)
+    {
+        if (amount <= 0)
+        {
+            throw new DomainException("Amount to decress cannot be less than or equal to 0");
+        }
+
+        Stock -= amount;
+
+        ValidateProduct();
+    }
+
     private void ValidateProduct()
     {
         if (string.IsNullOrWhiteSpace(Name))
