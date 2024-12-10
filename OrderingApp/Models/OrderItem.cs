@@ -5,6 +5,7 @@ public class OrderItem
 {
     public int Quantity { get; private set; }
     public decimal Price { get; private set; }
+    public decimal Discount { get; private set; }
 
     public int ProductId { get; private set; }
     public virtual Product? Product { get; private set; }
@@ -23,6 +24,13 @@ public class OrderItem
         ValidateOrderItem();
     }
 
+    public void SetDiscount(decimal discount)
+    {
+        Discount = discount;
+
+        ValidateOrderItem();
+    }
+
     private void ValidateOrderItem()
     {
         if (Price <= 0)
@@ -33,6 +41,11 @@ public class OrderItem
         if (Quantity <= 0)
         {
             throw new DomainException("Order item quantity cannot be less than or equal to 0");
+        }
+
+        if (Discount < 0)
+        {
+            throw new DomainException("Order discount cannot be negative");
         }
     }
 }

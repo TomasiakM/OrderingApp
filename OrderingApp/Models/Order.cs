@@ -13,6 +13,32 @@ public class Order
         Items = items;
 
         ValidateOrder();
+        CalculateDiscount();
+    }
+
+
+    private void CalculateDiscount()
+    {
+        var itemsCount = Items.Count;
+
+        if (itemsCount == 2)
+        {
+            var cheapest = Items.OrderBy(e => e.Price).First();
+            cheapest.SetDiscount(cheapest.Price * 0.1m);
+        }
+        else if (itemsCount >= 3)
+        {
+            var cheapest = Items.OrderBy(e => e.Price).First();
+            cheapest.SetDiscount(cheapest.Price * 0.2m);
+        }
+
+        var totalValue = Items.Sum(e => e.Price * e.Quantity);
+        if (totalValue > 5000)
+        {
+            Discount = totalValue * 0.05m;
+        }
+
+        ValidateOrder();
     }
 
     private void ValidateOrder()
