@@ -7,8 +7,7 @@ internal sealed class ThreeOrMoreItemsDiscountStrategy : IDiscountStrategy
 
     public void ApplyDiscount(Order order)
     {
-        var itemsCount = order.Items.Sum(e => e.Quantity);
-        if (order.Items.Sum(e => e.Quantity) >= 3)
+        if (order.GetQuantityOfAllProducts() >= 3)
         {
             var cheapest = order.Items.OrderBy(e => e.Price).First();
             cheapest.SetDiscount(cheapest.Price * Discount);
