@@ -17,6 +17,15 @@ internal sealed class ShowOrderView : IView
         {
             Console.Clear();
 
+            var itemsInCart = _cartService.GetItems();
+            if (!itemsInCart.Any())
+            {
+                Console.WriteLine("Koszyka jest pusty, nie można wyświetlić zamówienia");
+                Console.Read();
+
+                return;
+            }
+
             var order = _cartService.CreateOrder();
 
             Console.WriteLine("Twoje zamówienie: ");
