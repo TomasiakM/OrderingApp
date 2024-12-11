@@ -31,6 +31,16 @@ public class Product
         ValidateProduct();
     }
 
+    public void ReturnStock(int amount)
+    {
+        if (amount <= 0)
+        {
+            throw new DomainException("Amount to return cannot be less than or equal to 0");
+        }
+
+        Stock += amount;
+    }
+
     private void ValidateProduct()
     {
         if (string.IsNullOrWhiteSpace(Name))
