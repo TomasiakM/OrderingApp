@@ -1,6 +1,6 @@
 ﻿using OrderingApp.Models;
 
-namespace OrderingApp.Services.DiscountService.Strategies;
+namespace OrderingApp.Services.Discount.Strategies;
 internal sealed class TotalOrderValueDiscountStrategy : IDiscountStrategy
 {
     private const decimal Discount = 0.05m;

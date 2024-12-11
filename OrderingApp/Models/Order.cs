@@ -1,5 +1,5 @@
 ﻿using OrderingApp.Exceptions;
-using OrderingApp.Services.DiscountService;
+using OrderingApp.Services.Discount;
 
 namespace OrderingApp.Models;
 public class Order

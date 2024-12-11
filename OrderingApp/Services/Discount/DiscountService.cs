@@ -1,7 +1,7 @@
 ﻿using OrderingApp.Models;
-using OrderingApp.Services.DiscountService.Strategies;
+using OrderingApp.Services.Discount.Strategies;
 
-namespace OrderingApp.Services.DiscountService;
+namespace OrderingApp.Services.Discount;
 internal sealed class DiscountService : IDiscountService
 {
     private readonly List<IDiscountStrategy> _discountStrategies = new()

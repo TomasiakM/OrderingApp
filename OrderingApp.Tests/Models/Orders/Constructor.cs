@@ -1,6 +1,6 @@
 ﻿using Moq;
 using OrderingApp.Models;
-using OrderingApp.Services.DiscountService;
+using OrderingApp.Services.Discount;
 using OrderingApp.Tests.TestUtils;
 
 namespace OrderingApp.Tests.Models.Orders;

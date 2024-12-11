@@ -1,5 +1,5 @@
 ﻿using OrderingApp.Models;
-using OrderingApp.Services.DiscountService;
+using OrderingApp.Services.Discount;
 
 namespace OrderingApp.Tests.TestUtils;
 public class TestDiscountService : IDiscountService

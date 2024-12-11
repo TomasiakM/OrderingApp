@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using OrderingApp.Models;
-using OrderingApp.Services.DiscountService;
+using OrderingApp.Services.Discount;
 
 // { id: { product, quantity }}
 var cart = new Dictionary<int, Tuple<Product, int>>();

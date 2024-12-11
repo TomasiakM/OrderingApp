@@ -1,8 +1,8 @@
 ﻿using OrderingApp.Models;
-using OrderingApp.Services.DiscountService.Strategies;
+using OrderingApp.Services.Discount.Strategies;
 using OrderingApp.Tests.TestUtils;
 
-namespace OrderingApp.Tests.Services.DiscountService.Strategies;
+namespace OrderingApp.Tests.Services.Discount.Strategies;
 public class ThreeOrMoreItemsDiscountStrategies
 {
     [Fact]
