@@ -31,7 +31,7 @@ internal sealed class ShowOrderView : IView
             Console.WriteLine("Twoje zamówienie: ");
             PrintOrderItems(order);
 
-            Console.WriteLine("Ilość przedmiotów w zamówieniu: {0}, Wartość całego zamówienia (z uwzględnieniem obniżki {1}): {2}",
+            Console.WriteLine("Ilość przedmiotów w zamówieniu: {0}, Wartość całego zamówienia (obniżka całości zamówienia: {1}): {2}",
                 order.GetQuantityOfAllProducts(),
                 order.Discount,
                 order.GetTotalOrderValue());
@@ -49,7 +49,7 @@ internal sealed class ShowOrderView : IView
     {
         foreach (var item in order.Items)
         {
-            Console.WriteLine("Id produktu: {0}, Cena: {1}, Ilość: {2}, Wartość towaru (z uwzględnieniem obniżki {3}): {4}",
+            Console.WriteLine("Id produktu: {0} Nazwa: {1}, Cena: {2}, Ilość: {3}, Wartość towaru (obniżka produktu: {4}): {5}",
                 item.ProductId, item.Price, item.Quantity, item.Discount, item.GetTotalOrderItemValue());
         }
     }
